@@ -1,0 +1,30 @@
+version: "1"
+
+package:
+  id: io.github.freqStratStat
+  name: freqStratStat
+  version: 0.0.0.1
+  kind: app
+  description: |
+    The program reads your freqUI api and displays all strategies in a table from the freqTrade db and shows performance.
+
+command:
+  - /opt/apps/io.github./files/bin/freqStratStat
+
+base: org.deepin.foundation/23.0.0
+runtime: org.deepin.Runtime/23.0.1
+
+sources:
+  - kind: git
+    url: https://github.com/QTinman/freqStratStat.git
+    version: master
+    commit: 55c799123f08764aaef8554242e74521cb8538b7
+
+build: |
+  cd /project/linglong/sources/freqStratStat.git
+  git apply ../../../0001-install.patch
+  mkdir -p build
+  cd build
+  cmake .. \
+        -DCMAKE_INSTALL_PREFIX=${PREFIX}
+  cmake --build . --target install -j$(nproc --all)
