@@ -1,0 +1,49 @@
+From efbf19c1d3d6a78abe0fda7c36fc475a03e7683d Mon Sep 17 00:00:00 2001
+From: wjyrich <1071633242@qq.com>
+Date: Tue, 17 Sep 2024 14:54:45 +0800
+Subject: [PATCH] install
+
+---
+ CMakeLists.txt        |  8 ++++++++
+ freqStratStat.desktop | 11 +++++++++++
+ 2 files changed, 19 insertions(+)
+ create mode 100644 freqStratStat.desktop
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0c5d71e..9af81d5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -60,3 +60,11 @@ endif()
+ 
+ target_link_libraries(freqStratStat PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+ target_link_libraries(freqStratStat PRIVATE Qt${QT_VERSION_MAJOR}::Network)
++install(TARGETS ${PROJECT_NAME}
++             DESTINATION bin)
++
++install(FILES coffeecup.png
++        DESTINATION share/icons)
++
++install(FILES freqStratStat.desktop
++            DESTINATION share/applications)
+\ No newline at end of file
+diff --git a/freqStratStat.desktop b/freqStratStat.desktop
+new file mode 100644
+index 0000000..f987446
+--- /dev/null
++++ b/freqStratStat.desktop
+@@ -0,0 +1,11 @@
++[Desktop Entry]
++Categories=Accessibility;Qt;Utility;
++Exec=freqStratStat
++Name=freqStratStat
++Name[zh_CN]=freqStratStat
++Icon=coffeecup
++StartupNotify=false
++Terminal=false
++Type=Application
++GenericName=freqStratStat
++Version=1.0
+\ No newline at end of file
+-- 
+2.43.4
+
